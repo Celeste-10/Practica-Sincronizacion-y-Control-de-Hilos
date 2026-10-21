@@ -12,12 +12,13 @@ public class ContadorSeguro {
         return contador;
     }
 
-    public synchronized int retirarUnidad() {
+    public synchronized int[] procesarSolicitud() {
         if (inventario > 0) {
             inventario--;
-            return inventario;
+            contador++;
+            return new int[]{contador, inventario};
         }
-        return -1;
+        return null; // Ya no hay stock disponible
     }
 
     public synchronized int obtenerInventario() {

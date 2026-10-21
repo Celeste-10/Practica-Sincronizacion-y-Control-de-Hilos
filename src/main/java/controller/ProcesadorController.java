@@ -91,29 +91,30 @@ public class ProcesadorController {
 
                     if (isCancelled()) break;
 
-                    int actualContador = contadorModel.incrementar();
-                    int restoInventario = contadorModel.retirarUnidad();
+                    // Intentar procesar stock e incrementar contador de forma atómica
+                    int[] resultado = contadorModel.procesarSolicitud();
+
+                    // Si es null, el inventario llegó a 0; salimos sin alterar contadores
+                    if (resultado == null) {
+                        break;
+                    }
+
+                    int totalActual = resultado[0];
+                    int stockActual = resultado[1];
 
                     updateProgress(i, 20);
 
                     final int numSolicitud = i;
-                    final int totalActual = actualContador;
-                    final int stockActual = restoInventario;
 
-                    // Reto 2: Actualización segura de la UI mediante Platform.runLater()
+                    // Actualización segura del hilo gráfico
                     Platform.runLater(() -> {
-                        String estadoStock = (stockActual >= 0) ? String.valueOf(stockActual) : "AGOTADO";
+                        String estadoStock = (stockActual > 0) ? String.valueOf(stockActual) : "AGOTADO";
                         lblTotal.setText(String.format("Procesadas: %d | Inventario: %s", totalActual, estadoStock));
 
                         listHistorial.getItems().add(
                                 String.format("[%s] Solicitud #%d procesada. (Total: %d)", operador, numSolicitud, totalActual)
                         );
                     });
-
-                    // Si el inventario se agota, detiene la tarea
-                    if (restoInventario <= 0) {
-                        break;
-                    }
                 }
                 return null;
             }

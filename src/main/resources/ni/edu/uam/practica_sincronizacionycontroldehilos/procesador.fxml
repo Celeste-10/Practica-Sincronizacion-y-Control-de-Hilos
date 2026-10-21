@@ -1,63 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox spacing="14.0" prefWidth="480.0"
-      style="-fx-background-color: #F4F6F9; -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.ProcesadorController">
+<VBox prefHeight="543.0" prefWidth="488.0" spacing="14.0" style="-fx-background-color: #F4F6F9; -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProcesadorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <VBox spacing="4.0" style="-fx-background-color: #2C3E50; -fx-background-radius: 8; -fx-padding: 12 16 12 16;">
-        <Label text="SISTEMA DE PROCESAMIENTO CONCURRENTE"
-               style="-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 14px;" />
-        <Label text="Oficina de Gestión de Solicitudes"
-               style="-fx-text-fill: #BDC3C7; -fx-font-size: 11px;" />
+        <Label style="-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 14px;" text="SISTEMA DE PROCESAMIENTO CONCURRENTE" />
+        <Label style="-fx-text-fill: #BDC3C7; -fx-font-size: 11px;" text="Oficina de Gestión de Solicitudes" />
     </VBox>
 
     <VBox spacing="6.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6; -fx-border-color: #E2E8F0; -fx-border-radius: 6; -fx-border-width: 1; -fx-padding: 12;">
-        <Label fx:id="lblTotal" text="Procesadas: 0 | Inventario: 25"
-               style="-fx-text-fill: #2B6CB0; -fx-font-weight: bold; -fx-font-size: 13px;" />
-        <Label fx:id="lblEstado" text="Estado: Sin iniciar"
-               style="-fx-text-fill: #4A5568; -fx-font-size: 12px;" />
+        <Label fx:id="lblTotal" style="-fx-text-fill: #2B6CB0; -fx-font-weight: bold; -fx-font-size: 13px;" text="Procesadas: 0 | Inventario: 25" />
+        <Label fx:id="lblEstado" style="-fx-text-fill: #4A5568; -fx-font-size: 12px;" text="Estado: Sin iniciar" />
     </VBox>
 
     <VBox spacing="6.0">
-        <Label text="Operador A" style="-fx-font-weight: bold; -fx-text-fill: #2D3748;" />
-        <HBox spacing="10.0" alignment="CENTER_LEFT">
-            <ProgressBar fx:id="barra1" progress="0.0" HBox.hgrow="ALWAYS" maxWidth="Infinity"
-                         style="-fx-accent: #3182CE;" />
-            <Button fx:id="btnCancelarA" text="Cancelar A" onAction="#cancelarOperadorA" disable="true"
-                    style="-fx-background-color: #E53E3E; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #2D3748;" text="Operador A" />
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <ProgressBar fx:id="barra1" maxWidth="Infinity" progress="0.0" style="-fx-accent: #3182CE;" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnCancelarA" disable="true" onAction="#cancelarOperadorA" style="-fx-background-color: #E53E3E; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Cancelar A" />
         </HBox>
     </VBox>
 
     <VBox spacing="6.0">
-        <Label text="Operador B" style="-fx-font-weight: bold; -fx-text-fill: #2D3748;" />
-        <ProgressBar fx:id="barra2" progress="0.0" maxWidth="Infinity"
-                     style="-fx-accent: #38A169;" />
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #2D3748;" text="Operador B" />
+        <ProgressBar fx:id="barra2" maxWidth="Infinity" progress="0.0" style="-fx-accent: #38A169;" />
     </VBox>
 
     <VBox spacing="6.0" VBox.vgrow="ALWAYS">
-        <Label text="Historial de Solicitudes:" style="-fx-font-weight: bold; -fx-text-fill: #4A5568;" />
-        <ListView fx:id="listHistorial" prefHeight="130.0"
-                  style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E0; -fx-border-radius: 4; -fx-background-radius: 4;" />
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #4A5568;" text="Historial de Solicitudes:" />
+        <ListView fx:id="listHistorial" prefHeight="130.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E0; -fx-border-radius: 4; -fx-background-radius: 4;" />
     </VBox>
 
-    <HBox spacing="12.0" alignment="CENTER">
-        <Button fx:id="btnIniciar" text="Iniciar" onAction="#iniciarProcesamiento"
-                style="-fx-background-color: #3182CE; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" />
-        <Button fx:id="btnCancelar" text="Cancelar Todo" onAction="#cancelarTodo" disable="true"
-                style="-fx-background-color: #DD6B20; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" />
-        <Button fx:id="btnReiniciar" text="Reiniciar" onAction="#reiniciarConteo" disable="true"
-                style="-fx-background-color: #718096; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" />
+    <HBox alignment="CENTER" spacing="12.0">
+        <Button fx:id="btnIniciar" onAction="#iniciarProcesamiento" style="-fx-background-color: #3182CE; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" text="Iniciar" />
+        <Button fx:id="btnCancelar" disable="true" onAction="#cancelarTodo" style="-fx-background-color: #DD6B20; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" text="Cancelar Todo" />
+        <Button fx:id="btnReiniciar" disable="true" onAction="#reiniciarConteo" style="-fx-background-color: #718096; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" text="Reiniciar" />
     </HBox>
 </VBox>
