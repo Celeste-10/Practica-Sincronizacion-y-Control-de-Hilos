@@ -34,7 +34,7 @@
 
     <VBox spacing="6.0" VBox.vgrow="ALWAYS">
         <Label style="-fx-font-weight: bold; -fx-text-fill: #4A5568;" text="Historial de Solicitudes:" />
-        <ListView fx:id="listHistorial" prefHeight="130.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E0; -fx-border-radius: 4; -fx-background-radius: 4;" />
+        <ListView fx:id="listHistorial" prefHeight="164.0" prefWidth="448.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E0; -fx-border-radius: 4; -fx-background-radius: 4;" />
     </VBox>
 
     <HBox alignment="CENTER" spacing="12.0">

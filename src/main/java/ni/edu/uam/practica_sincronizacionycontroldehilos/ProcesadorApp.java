@@ -10,7 +10,7 @@ public class ProcesadorApp extends Application {
     @Override
     public void start(Stage ventana) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("procesador.fxml"));
-        Scene scene = new Scene(loader.load(), 450, 480);
+        Scene scene = new Scene(loader.load(), 480, 600);
 
         ProcesadorController controller = loader.getController();
 
