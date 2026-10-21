@@ -11,12 +11,11 @@
 <VBox spacing="14.0" prefWidth="480.0"
       style="-fx-background-color: #F4F6F9; -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.ejemplo.procesador.controller.ProcesadorController">
+      fx:controller="controller.ProcesadorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <!-- Encabezado / Título principal -->
     <VBox spacing="4.0" style="-fx-background-color: #2C3E50; -fx-background-radius: 8; -fx-padding: 12 16 12 16;">
         <Label text="SISTEMA DE PROCESAMIENTO CONCURRENTE"
                style="-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 14px;" />
@@ -24,7 +23,6 @@
                style="-fx-text-fill: #BDC3C7; -fx-font-size: 11px;" />
     </VBox>
 
-    <!-- Panel de Estado General -->
     <VBox spacing="6.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 6; -fx-border-color: #E2E8F0; -fx-border-radius: 6; -fx-border-width: 1; -fx-padding: 12;">
         <Label fx:id="lblTotal" text="Procesadas: 0 | Inventario: 25"
                style="-fx-text-fill: #2B6CB0; -fx-font-weight: bold; -fx-font-size: 13px;" />
@@ -32,7 +30,6 @@
                style="-fx-text-fill: #4A5568; -fx-font-size: 12px;" />
     </VBox>
 
-    <!-- Operador A -->
     <VBox spacing="6.0">
         <Label text="Operador A" style="-fx-font-weight: bold; -fx-text-fill: #2D3748;" />
         <HBox spacing="10.0" alignment="CENTER_LEFT">
@@ -43,21 +40,18 @@
         </HBox>
     </VBox>
 
-    <!-- Operador B -->
     <VBox spacing="6.0">
         <Label text="Operador B" style="-fx-font-weight: bold; -fx-text-fill: #2D3748;" />
         <ProgressBar fx:id="barra2" progress="0.0" maxWidth="Infinity"
                      style="-fx-accent: #38A169;" />
     </VBox>
 
-    <!-- Reto 2: Historial de Solicitudes -->
     <VBox spacing="6.0" VBox.vgrow="ALWAYS">
         <Label text="Historial de Solicitudes:" style="-fx-font-weight: bold; -fx-text-fill: #4A5568;" />
         <ListView fx:id="listHistorial" prefHeight="130.0"
                   style="-fx-background-color: #FFFFFF; -fx-border-color: #CBD5E0; -fx-border-radius: 4; -fx-background-radius: 4;" />
     </VBox>
 
-    <!-- Panel de Botones Principales -->
     <HBox spacing="12.0" alignment="CENTER">
         <Button fx:id="btnIniciar" text="Iniciar" onAction="#iniciarProcesamiento"
                 style="-fx-background-color: #3182CE; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 18; -fx-cursor: hand;" />
